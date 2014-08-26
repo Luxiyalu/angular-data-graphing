@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>International Average Salary Income</title>
+<meta charset="UTF-8" />
+<meta name="Keywords" content="">
+<meta name="Description" content="">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="" rel="shortcut icon" type="image/png" />
+<link rel="stylesheet" href="styles/main.css">
+</head>
+<body ng-controller="AppController">
+<div id="wrapper" class="center-block">
+    <h1 class="text-center">International Average Monthly Income</h1>
+    <div id="content-wrapper">
+        <nav>
+            <div class="option">
+                <h4>Data source:</h4>
+                <button type="button" class="select select-left btn btn-default btn-xs" ng-class="{ 'active': dataUsed === 'ppp' }" ng-click="updateDataUsed('ppp')">PPP*</button>
+                <button type="button" class="select select-right btn btn-default btn-xs" ng-class="{ 'active': dataUsed === 'actual' }" ng-click="updateDataUsed('actual')">Actual</button>
+            </div>
+            <div class="option">
+                <h4>Sort by:</h4>
+                    <button type="button" class="select select-left btn btn-default btn-xs" ng-class="{ 'active': sortKeyword === 'key' }" ng-click="updateKeyword('key')">Alphabetical</button>
+                    <button type="button" class="select select-right btn btn-default btn-xs" ng-class="{ 'active': sortKeyword !== 'key' }"  ng-click="updateKeyword('value')">Value</button>
+                </div>
+            <div class="option">
+                <h4>Countries</h4>
+                <button type="button" class="country-name btn btn-default btn-xs" ng-class="{ 'btn-primary': country.Country === activeTab }" ng-click="toggleCountry( country )" ng-repeat="country in countries">{{country.Country}}</button>
+            </div>
+            <div class="option">
+                <h4>Occupations</h4>
+                <button type="button" class="job-title btn btn-default btn-xs" ng-class="{ 'btn-primary': occupation === activeTab }" ng-click="toggleOccupation( occupation )" ng-repeat="occupation in occupations | orderBy:'toString()' ">{{occupation}}</button>
+            </div>
+            <div class="notes">
+                <p>[1] Source of data: <a target="_blank" href="http://www.worldsalaries.org/">http://www.worldsalaries.org/</a></p>
+                <p>[2] The average salary, income, and expenditure data is tabulated in 2005 international dollars (denoted herein as "<a target="_blank" href="http://en.wikipedia.org/wiki/Purchasing_power_parity">PPP dollar</a>"). The 2005 international dollar has the purchasing power that the U.S. dollar had in 2005 in the United States.</p>
+            </div>
+        </nav>
+        <h3 ng-if="!activeTab" class="prompt text-center toggle-prompt">SELECT TABS ON THE LEFT</h3>
+        <div id="graph" class="toggle-graph" ng-if="activeTab">
+            <div class="y-axis"></div>
+            <div class="data-item data-item-animation" ng-repeat="dataObj in graphArr | orderBy: sortKeyword">
+                <h5 class="key">{{dataObj.key}}</h5>
+                <div class="value" data-width="{{ dataObj[ dataUsed ] }}" style="width:{{ dataObj[ dataUsed ] * 380 / 6000 }}px;">
+                    <div class="salary-wrapper">
+                        <p>{{ dataObj[ dataUsed ] | currency: "$" }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script data-main="scripts/config" src="vendors/requirejs/require.js"></script>
+</body>
+</html>

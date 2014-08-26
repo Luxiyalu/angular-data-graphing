@@ -1,0 +1,113 @@
+/*colors*/
+@bg: rgba(240, 240, 240, 1);
+@bgblue: rgba(42, 117, 196, .3);
+
+/*methods*/
+.border-right-radius(@radius) {
+  border-bottom-right-radius: @radius;
+     border-top-right-radius: @radius;
+}
+.border-left-radius(@radius) {
+  border-bottom-left-radius: @radius;
+     border-top-left-radius: @radius;
+}
+
+/*style*/
+body{
+    padding: 10px 20px 30px;
+    background: @bg;
+    #wrapper{
+        width: 900px;
+        #content-wrapper{
+            position: relative;
+            margin: 40px 0;
+        }
+    }
+}
+nav{
+    width: 29%;
+    display: inline-block;
+    vertical-align: top;
+    font-size: 0;
+    .option{
+        margin-bottom: 10px;
+    }
+    button{
+        display: inline-block;
+        margin: 5px 3px 0;
+        outline: none !important;
+        &:focus{
+        }
+        &.select{
+            &.select-left{
+                margin-right: 0;
+                .border-right-radius(0);
+            }
+            &.select-right{
+                margin-left: -1px;
+                .border-left-radius(0);
+            }
+        }
+    }
+    .notes{
+        margin-top: 20px;
+        p{
+            color: grey;
+            font-size: 10px;
+        }
+    }
+}
+.prompt{
+    margin-top: 200px;
+    color: grey;
+    width: 70%;
+    position: absolute;
+    display: inline-block;
+}
+#graph{
+    width: 70%;
+    position: relative;
+    /*position: absolute;*/
+    display: inline-block;
+    vertical-align: top;
+    padding-bottom: 10px;
+    margin-bottom: 50px;
+    .y-axis{
+        left: 185px;
+        width: 400px; 
+        height: 100%;
+        position: absolute;
+        background-color: @bg;
+        border-left: 2px grey solid;
+    }
+    .data-item{
+        width: auto;
+        height: 30px;
+        position: relative;
+        .key{
+            position: relative;
+            width: 175px;
+            display: inline-block;
+            text-align: right;
+            z-index: -1;
+        }
+        .value{
+            height: 19px;
+            background: @bgblue;
+            .border-right-radius(3px);
+            position: absolute;
+            top: 8px;
+            left: 186px;
+            .salary-wrapper{
+                right: -5px;
+                position: absolute;
+                p{
+                    margin-left: 100%;
+                    position: relative;
+                }
+            }
+        }
+    }
+}
+
+@import "../vendors/bootstrap/dist/css/bootstrap.min.css";

@@ -1,0 +1,14 @@
+{
+  "name": "angular-demo",
+  "version": "0.1.1",
+  "dependencies": {
+    "angular": "latest",
+    "angular-animate": "latest",
+    "bootstrap": "latest",
+    "jquery": "1.11.0",
+    "requirejs": "latest",
+    "greensock-js": "latest"
+  },
+  "optional": {
+  }
+}

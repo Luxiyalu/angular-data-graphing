@@ -1,0 +1,99 @@
+@import "../vendors/bootstrap/dist/css/bootstrap.min.css";
+/*colors*/
+/*methods*/
+/*style*/
+body {
+  padding: 10px 20px 30px;
+  background: #f0f0f0;
+}
+body #wrapper {
+  width: 900px;
+}
+body #wrapper #content-wrapper {
+  position: relative;
+  margin: 40px 0;
+}
+nav {
+  width: 29%;
+  display: inline-block;
+  vertical-align: top;
+  font-size: 0;
+}
+nav .option {
+  margin-bottom: 10px;
+}
+nav button {
+  display: inline-block;
+  margin: 5px 3px 0;
+  outline: none !important;
+}
+nav button.select.select-left {
+  margin-right: 0;
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
+}
+nav button.select.select-right {
+  margin-left: -1px;
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+}
+nav .notes {
+  margin-top: 20px;
+}
+nav .notes p {
+  color: grey;
+  font-size: 10px;
+}
+.prompt {
+  margin-top: 200px;
+  color: grey;
+  width: 70%;
+  position: absolute;
+  display: inline-block;
+}
+#graph {
+  width: 70%;
+  position: relative;
+  /*position: absolute;*/
+  display: inline-block;
+  vertical-align: top;
+  padding-bottom: 10px;
+  margin-bottom: 50px;
+}
+#graph .y-axis {
+  left: 185px;
+  width: 400px;
+  height: 100%;
+  position: absolute;
+  background-color: #f0f0f0;
+  border-left: 2px grey solid;
+}
+#graph .data-item {
+  width: auto;
+  height: 30px;
+  position: relative;
+}
+#graph .data-item .key {
+  position: relative;
+  width: 175px;
+  display: inline-block;
+  text-align: right;
+  z-index: -1;
+}
+#graph .data-item .value {
+  height: 19px;
+  background: rgba(42, 117, 196, 0.3);
+  border-bottom-right-radius: 3px;
+  border-top-right-radius: 3px;
+  position: absolute;
+  top: 8px;
+  left: 186px;
+}
+#graph .data-item .value .salary-wrapper {
+  right: -5px;
+  position: absolute;
+}
+#graph .data-item .value .salary-wrapper p {
+  margin-left: 100%;
+  position: relative;
+}
