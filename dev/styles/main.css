@@ -14,8 +14,8 @@ body #wrapper #content-wrapper {
   margin: 40px 0;
 }
 nav {
-  width: 29%;
   display: inline-block;
+  width: 29%;
   vertical-align: top;
   font-size: 0;
 }
@@ -28,14 +28,14 @@ nav button {
   outline: none !important;
 }
 nav button.select.select-left {
-  margin-right: 0;
-  border-bottom-right-radius: 0;
   border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  margin-right: 0;
 }
 nav button.select.select-right {
-  margin-left: -1px;
-  border-bottom-left-radius: 0;
   border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  margin-left: -1px;
 }
 nav .notes {
   margin-top: 20px;
@@ -45,55 +45,92 @@ nav .notes p {
   font-size: 10px;
 }
 .prompt {
+  display: inline-block;
+  position: absolute;
+  width: 70%;
   margin-top: 200px;
   color: grey;
-  width: 70%;
-  position: absolute;
-  display: inline-block;
+}
+.invisible {
+  visibility: hidden;
+}
+.invisible.visible {
+  visibility: visible;
 }
 #graph {
-  width: 70%;
-  position: relative;
   /*position: absolute;*/
   display: inline-block;
-  vertical-align: top;
-  padding-bottom: 10px;
+  position: relative;
+  width: 70%;
   margin-bottom: 50px;
+  padding-bottom: 10px;
+  vertical-align: top;
 }
 #graph .y-axis {
+  position: absolute;
   left: 185px;
   width: 400px;
   height: 100%;
-  position: absolute;
-  background-color: #f0f0f0;
   border-left: 2px grey solid;
+  background-color: #f0f0f0;
 }
 #graph .data-item {
+  position: relative;
   width: auto;
   height: 30px;
-  position: relative;
 }
 #graph .data-item .key {
+  display: inline-block;
   position: relative;
   width: 175px;
-  display: inline-block;
-  text-align: right;
   z-index: -1;
+  text-align: right;
 }
 #graph .data-item .value {
-  height: 19px;
-  background: rgba(42, 117, 196, 0.3);
-  border-bottom-right-radius: 3px;
   border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
   position: absolute;
   top: 8px;
   left: 186px;
+  height: 19px;
+  background: rgba(42, 117, 196, 0.3);
 }
 #graph .data-item .value .salary-wrapper {
-  right: -5px;
   position: absolute;
+  right: -5px;
 }
 #graph .data-item .value .salary-wrapper p {
-  margin-left: 100%;
   position: relative;
+  margin-left: 100%;
+}
+.github {
+  -webkit-transform: rotate(35deg) translate3d(72px, -15px, 10px);
+  -ms-transform: rotate(35deg) translate3d(72px, -15px, 10px);
+  -o-transform: rotate(35deg) translate3d(72px, -15px, 10px);
+  transform: rotate(35deg) translate3d(72px, -15px, 10px);
+  -webkit-transition: all 0.1s linear;
+  -moz-transition: all 0.1s linear;
+  transition: all 0.1s linear;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -ms-backface-visibility: hidden;
+  display: block;
+  position: fixed;
+  top: 0;
+  right: 0;
+  padding: 10px 100px;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  background: #dcdcdc;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 10px;
+  color: black;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 24px;
+  font-family: monospace;
+  opacity: 0.7;
+}
+.github:hover {
+  color: black;
+  text-decoration: none;
+  opacity: 1;
 }

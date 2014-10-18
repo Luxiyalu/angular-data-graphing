@@ -12,46 +12,48 @@
 </head>
 <body ng-controller="AppController">
 <div id="wrapper" class="center-block">
-    <h1 class="text-center">International Average Monthly Income</h1>
+    <h1 class="text-center">INTERNATIONAL AVERAGE MONTHLY INCOME</h1>
     <div id="content-wrapper">
         <nav>
             <div class="option">
-                <h4>Data source:</h4>
+                <h4>DATA SOURCE</h4>
                 <button type="button" class="select select-left btn btn-default btn-xs" ng-class="{ 'active': dataUsed === 'ppp' }" ng-click="updateDataUsed('ppp')">PPP*</button>
                 <button type="button" class="select select-right btn btn-default btn-xs" ng-class="{ 'active': dataUsed === 'actual' }" ng-click="updateDataUsed('actual')">Actual</button>
             </div>
             <div class="option">
-                <h4>Sort by:</h4>
+                <h4>SORT BY</h4>
                     <button type="button" class="select select-left btn btn-default btn-xs" ng-class="{ 'active': sortKeyword === 'key' }" ng-click="updateKeyword('key')">Alphabetical</button>
                     <button type="button" class="select select-right btn btn-default btn-xs" ng-class="{ 'active': sortKeyword !== 'key' }"  ng-click="updateKeyword('value')">Value</button>
                 </div>
             <div class="option">
-                <h4>Countries</h4>
-                <button type="button" class="country-name btn btn-default btn-xs" ng-class="{ 'btn-primary': country.Country === activeTab }" ng-click="toggleCountry( country )" ng-repeat="country in countries">{{country.Country}}</button>
+                <h4>COUNTRIES</h4>
+                <button type="button" class="country-name btn btn-default btn-xs" ng-class="{ 'btn-primary': country.Country === activeTab }" ng-click="toggleCountry( country )" ng-repeat="country in countries" ng-bind="country.Country"></button>
             </div>
             <div class="option">
-                <h4>Occupations</h4>
-                <button type="button" class="job-title btn btn-default btn-xs" ng-class="{ 'btn-primary': occupation === activeTab }" ng-click="toggleOccupation( occupation )" ng-repeat="occupation in occupations | orderBy:'toString()' ">{{occupation}}</button>
+                <h4>OCCUPATIONS</h4>
+                <button type="button" class="job-title btn btn-default btn-xs" ng-class="{ 'btn-primary': occupation === activeTab }" ng-click="toggleOccupation( occupation )" ng-repeat="occupation in occupations | orderBy:'toString()' " ng-bind="occupation"></button>
             </div>
             <div class="notes">
                 <p>[1] Source of data: <a target="_blank" href="http://www.worldsalaries.org/">http://www.worldsalaries.org/</a></p>
                 <p>[2] The average salary, income, and expenditure data is tabulated in 2005 international dollars (denoted herein as "<a target="_blank" href="http://en.wikipedia.org/wiki/Purchasing_power_parity">PPP dollar</a>"). The 2005 international dollar has the purchasing power that the U.S. dollar had in 2005 in the United States.</p>
             </div>
         </nav>
-        <h3 ng-if="!activeTab" class="prompt text-center toggle-prompt">SELECT TABS ON THE LEFT</h3>
+        <h3 class="prompt text-center toggle-prompt" ng-hide="true">LOADING DATA...</h3>
+        <h3 ng-if="!activeTab" class="prompt text-center toggle-prompt invisible" ng-class="'visible'">SELECT TABS ON THE LEFT</h3>
         <div id="graph" class="toggle-graph" ng-if="activeTab">
-            <div class="y-axis"></div>
+            <div class="y-axis invisible" ng-class="'visible'"></div>
             <div class="data-item data-item-animation" ng-repeat="dataObj in graphArr | orderBy: sortKeyword">
-                <h5 class="key">{{dataObj.key}}</h5>
+                <h5 class="key" ng-bind="dataObj.key"></h5>
                 <div class="value" data-width="{{ dataObj[ dataUsed ] }}" style="width:{{ dataObj[ dataUsed ] * 380 / 6000 }}px;">
                     <div class="salary-wrapper">
-                        <p>{{ dataObj[ dataUsed ] | currency: "$" }}</p>
+                        <p ng-bind="dataObj[ dataUsed ] | currency: '$'"></p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<a class="github" target="_blank" href="https://github.com/Luxiyalu/angular-data-graphing">Github</a>
 <script data-main="scripts/config" src="vendors/requirejs/require.js"></script>
 </body>
 </html>
